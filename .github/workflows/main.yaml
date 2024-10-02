@@ -45,12 +45,12 @@ jobs:
       with:
         repository: zcon-srchoi/argocd-kube
         token: ${{ secrets.MY_GITHUB_TOKEN }}
-        path: gitops-argocd
+        # path: gitops-argocd
 
     - name: Add date and push
       run: |
         GIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
-        cd gitops-argocd
+        # cd gitops-argocd
         sed -i "16s/.*/      - image: $ECR_REGISTRY\/$ECR_REPOSITORY:$GIT_HASH/g" deployment.yaml
         git add .
         git config --global user.email "github-actions@github.com"
